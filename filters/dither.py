@@ -22,6 +22,6 @@ def dither(img):
 
 def process_image(cv2_image):
     img = cv2.cvtColor(cv2_image, cv2.COLOR_BGR2GRAY)
-	_,th = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
-	dith = dither(img)
+    _,th = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
+    dith = dither(img)
     return dith
