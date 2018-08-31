@@ -1,5 +1,6 @@
 from PIL import Image, ImageDraw, ImageStat
 import os, sys
+import numpy as np
 
 class Halftone(object):
 
@@ -36,7 +37,7 @@ class Halftone(object):
             dots = self.halftone(im, cmyk, sample, scale, angles, antialias)
             new = Image.merge('CMYK', dots)
 
-        return new
+        return np.array(new)
 
     def gcr(self, im, percentage):
         """
@@ -143,4 +144,4 @@ class Halftone(object):
 
 def process_image(cv2_image):
     h = Halftone(Image.fromarray(cv2_image))
-    return h.make()
+    return h.make(angles=[0, 15, 45], antialias=True, sample=8, percentage=70, style='grayscale')

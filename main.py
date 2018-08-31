@@ -24,14 +24,14 @@ def shot_callback(ch):
     print "Button"
     ret, image = cam.read()
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    cv2.imshow("cartoon", gray)
     img1 = dither.process_image(image)
     img2 = halftone.process_image(image)
     img3 = pixelate.process_image(image)
     img4 = threshold.process_image(image)
+	cv2.imshow("cartoon", gray)
     cv2.imshow("cartoon1", img1)
     cv2.imshow("cartoon2", img2)
-    cv2.imshow("cartoon3", img3)
+    cv2.imshow("cartoon3", cv2.cvtColor(img3, cv2.COLOR_BGR2GRAY))
     cv2.imshow("cartoon4", img4)
 
 GPIO.add_event_detect(10, GPIO.FALLING, callback=shot_callback)
