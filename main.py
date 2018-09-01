@@ -16,16 +16,16 @@ filteredImages = []
 currentImageIndex = -1
 printImage = NULL
 
-def next_button_callback:
+def next_button_callback():
     empltyAction()
 
-def prev_button_callback:
+def prev_button_callback():
     empltyAction()
 
-def cancel_button_callback:
+def cancel_button_callback():
     empltyAction()
 
-def ok_button_callback:
+def ok_button_callback():
     empltyAction()
 
 def empltyAction():
@@ -33,14 +33,14 @@ def empltyAction():
 
 def showPrompt(text):
     print text
-	result = False
+    result = False
     while True:
-        if pushedButton == "Ok"
+        if pushedButton == "Ok":
             result = True		    
-			break
-        if pushedButton == "Cancel"
+            break
+        if pushedButton == "Cancel":    
             result = False		    
-			break
+            break
     return result
 			
 
@@ -48,7 +48,7 @@ def shot_callback(ch):
     print "Button"
     ret, image = cam.read()
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-	result = showPrompt("Ok?")
+    result = showPrompt("Ok?")
     if result:
         captureCam(False)
         showFilters(image, gray)
@@ -98,14 +98,14 @@ def showFilters(image, gray):
     img4 = threshold.process_image(image)
     filteredImages = [gray, img1, img2, img3, img4]
     attachMenuButtons(showNext, showPrev, captureCam, )
-	cv2.imshow("cartoon", gray)
+    cv2.imshow("cartoon", gray)
     cv2.imshow("cartoon1", img1)
     cv2.imshow("cartoon2", img2)
     cv2.imshow("cartoon3", img3)
     cv2.imshow("cartoon4", img4)
 
 
-def setup()
+def setup():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(10, GPIO.IN)
     GPIO.add_event_detect(10, GPIO.FALLING, callback=shot_callback)
@@ -132,7 +132,7 @@ def captureCam(flag):
         cv2.imshow('live_view',image)
     else:
         cam.release()
-		cam = NULL
+        cam = NULL
 		
 
 def startMain():
